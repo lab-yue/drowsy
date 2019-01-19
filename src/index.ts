@@ -1,2 +1,2 @@
-import drowsy from './drowsy';
+import * as drowsy from "./export";
 export default drowsy;

@@ -1,22 +1,21 @@
-import drowsy from '../src/';
-import * as Drowsy from '../src/type';
+import drowsy from "../src/";
 
-const config: Drowsy.Config = {
+const config: drowsy.Config = {
     wp: {
-        ver: '5.0.3',
-        url: 'https://your.wordpress.com',
-        user: '__username__',
-        password: '__password__'
+        ver: "5.0.3",
+        url: "https://your.wordpress.com",
+        user: "__username__",
+        password: "__password__",
     },
     LaunchOptions: {
-        headless: false
-    }
+        headless: false,
+    },
 };
 
-const newpost: Drowsy.Post = {
+const newpost: drowsy.Post = {
     title: `I'm drowsy`,
-    type: 'blog',
-    content: `post this drowsily`
+    type: "blog",
+    content: `post this drowsily`,
 };
 
 (async () => {

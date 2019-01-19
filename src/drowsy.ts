@@ -1,21 +1,20 @@
-import * as puppeteer from "puppeteer";
+import puppeteer from "puppeteer";
 import selectors from "./selectors";
-import * as Drowsy from "./type";
+import { Browser, Config, Post } from "./type";
 
 // Launch and return Browser
 
-const launch = async (config: Drowsy.Config): Promise<Drowsy.Browser> => {
+const launch = async ({ wp, LaunchOptions }: Config): Promise<Browser> => {
 
-    const { wp, LaunchOptions } = config;
     wp.admin = `${wp.url}/wp-admin`;
-    const browser = await puppeteer.launch(LaunchOptions) as Drowsy.Browser;
+    const browser = await puppeteer.launch(LaunchOptions) as Browser;
     const mainPage = await browser.newPage();
 
     // Login with config
 
     browser.login = async (withNewPage?: boolean) => {
         const page = withNewPage ? await browser.newPage() : mainPage;
-        await page.goto(wp.admin, { waitUntil: "networkidle2" });
+        await page.goto(wp.admin as string, { waitUntil: "networkidle2" });
         await page.type("#user_login", wp.user);
         await page.type("#user_pass", wp.password);
         await page.click("#wp-submit");
@@ -28,7 +27,7 @@ const launch = async (config: Drowsy.Config): Promise<Drowsy.Browser> => {
 
     // Post Content
 
-    browser.post = async (post: Drowsy.Post, withNewPage?: boolean) => {
+    browser.post = async (post: Post, withNewPage?: boolean) => {
 
         const url = post.type === "blog"
             ? `${wp.admin}/post-new.php`
@@ -52,12 +51,10 @@ const launch = async (config: Drowsy.Config): Promise<Drowsy.Browser> => {
         if (withNewPage) {
             await page.close();
         }
-
     };
 
     return browser;
 };
-
-export default {
+export  {
     launch,
 };

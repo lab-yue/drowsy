@@ -16,17 +16,17 @@ export interface Config {
     };
 }
 
+export interface Browser extends puppeteer.Browser {
+    login(withNewPage?: boolean): Promise<void>;
+    post(post: Post, withNewPage?: boolean): Promise<void>;
+}
+
 export type PostType = string;
 
 export interface Post {
     type: PostType;
     title: string;
     content: string;
-}
-
-export interface Browser extends puppeteer.Browser {
-    login(withNewPage?: boolean): Promise<void>;
-    post(post: Post, withNewPage?: boolean): Promise<void>;
 }
 
 export interface Selector {

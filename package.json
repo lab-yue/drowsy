@@ -1,12 +1,19 @@
 {
   "name": "@faya/drowsy",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "WordPress automation made with puppeteer and typescript",
   "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "build": "tsc",
     "test": "ts-node example/example.ts",
     "lint": "tslint -p tsconfig.json"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rainy-me/drowsy.git"
+   },
   "dependencies": {
     "@types/node": "^10.12.18",
     "@types/puppeteer": "^1.11.1",

@@ -2,6 +2,10 @@
 
 WordPress automation made with `puppeteer` and `typescript`
 
+## Install
+
+`yarn add puppeteer typescript @faya/drowsy `
+
 ## Usage
 
 see [example](./example/example.ts)
