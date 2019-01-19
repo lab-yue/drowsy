@@ -5,7 +5,7 @@ const ver: Drowsy.SelectorByVersion = {
         title: "#post-title-0",
         content: ".editor-default-block-appender__content",
         submit: ".editor-post-publish-panel__toggle",
-        comfirm: ".editor-post-publish-button",
+        confirm: ".editor-post-publish-button",
     },
 };
 

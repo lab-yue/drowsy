@@ -33,7 +33,7 @@ export interface Selector {
     title: string;
     content: string;
     submit: string;
-    comfirm?: string;
+    confirm?: string;
 }
 
 export interface SelectorByVersion {

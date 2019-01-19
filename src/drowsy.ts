@@ -20,6 +20,10 @@ const launch = async (config: Drowsy.Config): Promise<Drowsy.Browser> => {
         await page.type("#user_pass", wp.password);
         await page.click("#wp-submit");
         await page.waitForNavigation({ waitUntil: "networkidle2" });
+
+        if (withNewPage) {
+            await page.close();
+        }
     };
 
     // Post Content
@@ -38,12 +42,17 @@ const launch = async (config: Drowsy.Config): Promise<Drowsy.Browser> => {
         await page.type(selector.content, post.content);
         await page.click(selector.submit);
 
-        if (selector.comfirm) {
+        if (selector.confirm) {
             await page.waitFor(200);
-            await page.click(selector.comfirm);
+            await page.click(selector.confirm);
         }
 
         await page.waitForNavigation({ waitUntil: "networkidle2" });
+
+        if (withNewPage) {
+            await page.close();
+        }
+
     };
 
     return browser;
